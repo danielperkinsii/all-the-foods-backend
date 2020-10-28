@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "restaurants",
+  "collectionName": "dishes",
   "info": {
-    "name": "restaurant",
-    "description": ""
+    "name": "dish"
   },
   "options": {
     "increments": true,
@@ -14,8 +13,11 @@
     "name": {
       "type": "string"
     },
+    "description": {
+      "type": "richtext"
+    },
     "image": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -25,18 +27,12 @@
       "plugin": "upload",
       "required": false
     },
-    "description": {
-      "type": "richtext"
+    "price": {
+      "type": "decimal"
     },
-    "neighborhood": {
-      "type": "string"
-    },
-    "delivery": {
-      "type": "boolean"
-    },
-    "dishes": {
-      "via": "restaurant",
-      "collection": "dish"
+    "restaurant": {
+      "model": "restaurant",
+      "via": "dishes"
     }
   }
 }
